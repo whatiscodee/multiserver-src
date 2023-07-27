@@ -1,0 +1,10 @@
+name: multiserver
+version: '${project.version}'
+main: me.kaban4ik.multiserver.Multiserver
+api-version: '1.20'
+
+commands:
+  getpos:
+    description: "корды получить чела"
+  sit:
+    description: "присесть, а может и полететь, я хз"
