@@ -11,6 +11,7 @@ import org.bukkit.event.player.PlayerChangedWorldEvent;
 
 public class NickColorWorldChanger implements Listener {
     ChatColor color;
+    String worldName;
 
     @EventHandler
     public void onPlayerChangeWorld(PlayerChangedWorldEvent event) {
@@ -20,18 +21,21 @@ public class NickColorWorldChanger implements Listener {
         // тут уже код определения цвета по миру
         if (world.getEnvironment() == World.Environment.NETHER) {
             color = ChatColor.RED;
+            worldName = "[Nether]";
         } else if (world.getEnvironment() == World.Environment.THE_END) {
             color = ChatColor.BLUE;
+            worldName = "[End]";
         } else { // в остальных мирах зеленый
             color = ChatColor.GREEN;
+            worldName = "[World]";
         }
 
         // устанавливаем челу цвет к нику
-        player.setDisplayName(color + player.getName());
+        player.setDisplayName(color + worldName + " " + player.getName());
 
         // обновлялка цвета в табе
         for (Player online : Bukkit.getServer().getOnlinePlayers()) {
-            online.setPlayerListName(color + online.getName());
+            online.setPlayerListName(color + worldName + " " + online.getName());
         }
     }
 }

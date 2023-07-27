@@ -7,6 +7,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.val;
 import me.kaban4ik.multiserver.modules.impl.DeathCoordinateModule;
 import me.kaban4ik.multiserver.modules.impl.GetPlayerPositionCommand;
+import me.kaban4ik.multiserver.modules.impl.nickcolor.NickColorWorldChanger;
 import me.kaban4ik.multiserver.modules.impl.scoreboard.ScoreboardModule;
 import me.kaban4ik.multiserver.modules.impl.sit.SitCommand;
 import me.kaban4ik.multiserver.modules.listeners.HelloPlayerListener;
@@ -36,6 +37,7 @@ public final class Multiserver extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents((Listener) new DeathCoordinateModule(), (Plugin)getInstance());
         Bukkit.getServer().getPluginManager().registerEvents((Listener) new SitCommand(), (Plugin)getInstance());
         Bukkit.getServer().getPluginManager().registerEvents((Listener) new HelloPlayerListener(), (Plugin)getInstance());
+        Bukkit.getServer().getPluginManager().registerEvents((Listener) new NickColorWorldChanger(), (Plugin)getInstance());
 
         getCommand("getpos").setExecutor(new GetPlayerPositionCommand());
         getCommand("sit").setExecutor(new SitCommand());
