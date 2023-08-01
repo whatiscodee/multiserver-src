@@ -14,32 +14,4 @@ import protocolsupport.api.ProtocolSupportAPI;
 import protocolsupport.api.ProtocolVersion;
 
 public class ScoreboardModule {
-
-    private ScoreboardManager scoreboardManager;
-    private Scoreboard scoreboard;
-    protected Objective objective;
-
-    public ScoreboardModule() {
-        scoreboardManager = Bukkit.getScoreboardManager();
-        scoreboard = scoreboardManager.getNewScoreboard();
-        objective = scoreboard.registerNewObjective("server_info", "dummy", "§A§LKABAN4IK BOARD");
-        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-
-        new BukkitRunnable() {
-
-            @Override
-            public void run() {
-                updateScoreboard();
-            }
-        }.runTaskTimer(Bukkit.getPluginManager().getPlugin("multiserver"), 0, 20);
-    }
-
-    private void updateScoreboard() {
-        val serverName = "UHC 4.0";
-
-        for (val player : Bukkit.getOnlinePlayers()) {
-            player.setScoreboard(scoreboard);
-        }
-        objective.setDisplayName(serverName);
-    }
 }
